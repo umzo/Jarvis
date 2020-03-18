@@ -8,7 +8,17 @@ export default new Router({
     {
       path: '/',
       name: 'landing-page',
-      component: require('@/components/LandingPage').default,
+      component: require('@/components/MainPage').default,
+    },
+    // {
+    //   path: '/',
+    //   name: 'landing-page',
+    //   component: require('@/components/LandingPage').default,
+    // },
+    {
+      path: '/manager/task',
+      name: 'manager-task',
+      component: require('@/components/Manager/Task').default,
     },
     {
       path: '*',

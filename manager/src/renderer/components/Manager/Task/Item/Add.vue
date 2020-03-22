@@ -1,7 +1,13 @@
 <template>
   <div class="task-item task-item-add">
-    <div class="task-item__action" v-on:click="hoge()">
+    <div class="task-item__action" v-on:click="someAsyncTask()">
       アクションボタン
+    </div>
+    <div class="task-item__action" v-on:click="hoge()">
+      アクションボタン2
+    </div>
+    <div class="task-item__action" v-on:click="fuga()">
+      アクションボタン3
     </div>
     <div class="task-item__title">
       ダミータイトル
@@ -18,23 +24,27 @@
 
 <script>
   // import TaskItemAdd from './Task/Item/';
-  import { mapActions } from 'vuex';
+  import { mapActions, mapState } from 'vuex';
   export default {
     data() {
       return {
       };
     },
     computed: {
-      count() {
-        return this.$store.state.Counter.main;
-      },
-      // ...mapState('Counter', { main: state => state.main }),
+      ...mapState({
+        count: state => state.counter.main,
+      }),
     },
     methods: {
+      ...mapActions('counter', [
+        'someAsyncTask',
+      ]),
       hoge() {
-        console.log(this.someAsyncTask);
+        console.log(this.count);
       },
-      ...mapActions({ someAsyncTask: 'Counter/someAsyncTask' }),
+      fuga() {
+        this.someAsyncTask();
+      },
     },
   };
 </script>

@@ -1,5 +1,5 @@
 const state = {
-  main: 0,
+  main: 1,
 };
 
 const mutations = {
@@ -14,11 +14,13 @@ const mutations = {
 const actions = {
   someAsyncTask({ commit }) {
     // do something async
+    console.log('testhoge');
     commit('INCREMENT_MAIN_COUNTER');
   },
 };
 
 export default {
+  namespaced: true,
   state,
   mutations,
   actions,
